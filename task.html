@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="Enter text.." id="revwordby">
+    <button id="btn">clicktorev</button>
+    <div id="output"></div>
+    <script>
+        let input = document.getElementById('revwordby');
+        let output = document.getElementById('output');
+        let btn = document.getElementById('btn');
+
+        btn.addEventListener('click', () => {
+            let inputvalue = input.value;
+            let res = wordbyword(inputvalue);
+            output.innerHTML = `<h2>${res}</h2>`;
+        });
+
+        function wordbyword(str){
+            let s = '';
+            let k = str.length;
+            for (let i = str.length - 1; i >= 0; i--) {
+                if (str[i] == ' ') {
+                    let a = str.slice(i + 1, k);
+                    s = s + a + ' ';
+                    k = i;
+                }
+            }
+            s += str.slice(0, k);
+            return s;
+        }
+
+        let st = 'Success comes to those who work hard';
+        let res = wordbyword(st);
+        console.log(res);
+    </script>
+</body>
+</html>
